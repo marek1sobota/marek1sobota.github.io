@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/04e611373c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+ <div id="header">
+<div class="container">
+    <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skill">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i id="close" class="fa-solid fa-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i id="menubar" class="fa-solid fa-bars" onclick="openmenu()"></i>
+    </nav>
+    <div class="header-text">
+        <p>Web Developer</p>
+        <h1>Hi, I'm Marek Sobota From Poland</h1>
+    </div>
+</div>
+</div>
+<!-- ------------about------->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-column-1">
+                <img src="images/ja.png">
+            </div>
+            <div class="about-column-2">
+                <h1 class="sub-title">About Me</h1>
+                <p><br><br>I'm a third-year computer science student at the University of Silesia with a passion for creating innovative and visually appealing websites. Proficient in HTML, JavaScript, and CSS, 
+                    my goal is to become a versatile web designer/developer.My journey into computer science started at university, where I'm gaining solid theoretical knowledge
+                    Actively evolving in designing responsive interfaces and implementing user-friendly features, I strive to find a balance between creativity and functionality.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Web Development</span><br>Web app Development</li>
+                            <li><span>C++/Java programing</span><br>Basics of programing</li>
+                            <li><span>Testing Development</span><br>Unit tests</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Current</span><br>University of Silesia</li>
+                            <li><span>2017-2019</span><br>Secondary School named after major Henryk Sucharski in Myszków</li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!-- ----skills----------------------->
+<div id="skill">
+    <div class="container">
+        <h1 class="sub-title">Technologies i know well </h1>
+        <div class="skills-container">
+            <div class="skill-icon"><img src="images/html5-icon-1.png" alt="HTML"></div>
+            <div class="skill-icon"><img src="images/919826.png" alt="CSS"></div>
+            <div class="skill-icon"><img src="images/5968292.png" alt="JavaScript"></div>
+            <div class="skill-icon"><img src="images/java.png" alt="Java"></div>
+            <div class="skill-icon"><img src="images/c++-removebg-preview.png" alt="C++"></div>
+            <div class="skill-icon"><img src="images/sql-removebg-preview.png" alt="SQL"></div>
+            <div class="skill-icon"><img src="images/qt-removebg-preview.png" alt="QT"></div>
+            <div class="skill-icon"><img src="images/php-removebg-preview.png" alt="PHP"></div>
+            <div class="skill-icon"><img src="images/blender-removebg-preview.png" alt="Blender"></div>
+        </div>
+    </div>
+</div>
+
+ <!-- ------------projects------------->
+ <div id="projects">
+    <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/gra-PhotoRoom.png-PhotoRoom .png">
+                <div class="layer">
+                    <h3>Java game - pio</h3>
+                    <p>My work in Java on Fundamentals of Software Engineering</p>
+                    <a href="https://github.com/marek1sobota/java-pio"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="https://github.com/marek1sobota?tab=repositories" class="btn">See more</a>
+    </div>
+ </div>
+ 
+
+
+
+ <!-- ----contact----------------------->
+ <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i> lolsobota17@gmail.com</p>
+                <p><i class="fa-solid fa-mobile-screen"></i> 515458997</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100077273500344"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://twitter.com/MarekSobota9"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/marek-sobota-415b91271/"><i class="fa-brands fa-linkedin"></i></a>
+                </div>          
+            </div>
+            <div class="contact-right">
+                <form >
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+ </div>
+
+<script>
+
+var tablinks = document.getElementsByClassName("tab-links");
+var tabcontents = document.getElementsByClassName("tab-contents");
+
+function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+}
+
+</script>
+<script>
+
+    var sidemeu = document.getElementById("sidemenu");
+
+    function openmenu(){
+    sidemeu.style.right = "0";
+    }
+
+    function openmenu(){
+    sidemeu.style.right = "-200px";
+    }
+
+</script>
+
+</body>
+</html>
