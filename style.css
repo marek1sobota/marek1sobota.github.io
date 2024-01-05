@@ -162,8 +162,8 @@ nav ul li a:hover::after{
 }
 
 .work img{
-    margin-left: 500px;
-    width: 30%;
+    margin:0 400px;
+    width: 40%;
     border-radius: 10px;
     display: block;
 }
