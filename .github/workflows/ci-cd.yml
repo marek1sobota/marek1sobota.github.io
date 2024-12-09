@@ -1,32 +1,22 @@
-name: Deploy to GitHub Pages
+name: Deploy to FTP Server
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
 
     steps:
-     
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js (opcjonalne)
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  
-
-      # 4. Budowanie strony (jeśli korzystasz z frameworku jak React czy Vue.js)
-      - name: Build the project (jeśli używasz npm/yarn)
-        run: npm run build  # Przykład dla aplikacji frontendowej
-
-      
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4  
-        with:
-          branch: gh-pages  
-          folder: build     
-          token: ${{ secrets.GITHUB_TOKEN }}  
+    - name: Setup FTP Deployment
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: .
