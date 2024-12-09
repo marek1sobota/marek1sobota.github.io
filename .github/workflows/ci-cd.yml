@@ -3,26 +3,30 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Wybieramy gałąź, z której będą publikowane zmiany
+      - main  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
 
     steps:
+     
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js (jeśli używasz np. Jekyll lub innej technologii)
+      - name: Set up Node.js (opcjonalne)
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14'  
 
-      - name: Build the website (jeśli masz proces budowania)
-        run: npm run build  # Przykład komendy budowania
+      # 4. Budowanie strony (jeśli korzystasz z frameworku jak React czy Vue.js)
+      - name: Build the project (jeśli używasz npm/yarn)
+        run: npm run build  # Przykład dla aplikacji frontendowej
 
+      
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4  
         with:
-          branch: gh-pages  # Wybieramy gałąź do publikacji
-          folder: build     # Ścieżka do folderu z plikami strony
+          branch: gh-pages  
+          folder: build     
+          token: ${{ secrets.GITHUB_TOKEN }}  
