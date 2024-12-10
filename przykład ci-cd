@@ -1,0 +1,48 @@
+name: CI/CD for Marek Sobota Web Portfolio
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+    branches:
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'  # Wersja PHP, dostosuj do wersji, którą używasz
+      - name: Install Composer dependencies
+        run: |
+          curl -sS https://getcomposer.org/installer | php
+          php composer.phar install --no-dev --prefer-dist
+      - name: Run tests
+        run: |
+          php vendor/bin/phpunit
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  # Upewniamy się, że build zakończył się sukcesem przed wdrożeniem
+    if: github.ref == 'refs/heads/main'  # Tylko dla gałęzi main
+
+    steps:
+      # Sprawdzamy kod źródłowy
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+     
+      - name: Deploy to server via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v5
+        with:
+          ftp-server: ${{ secrets.FTP_SERVER }}  
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./  
+          remote-dir: /public_html/portfolio  
