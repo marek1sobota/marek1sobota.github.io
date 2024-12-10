@@ -18,7 +18,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'  # Wersja PHP, dostosuj do wersji, którą używasz
+          php-version: '8.1'  
       - name: Install Composer dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php
@@ -29,7 +29,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Upewniamy się, że build zakończył się sukcesem przed wdrożeniem
+    needs: build  
     if: github.ref == 'refs/heads/main'  # Tylko dla gałęzi main
 
     steps:
