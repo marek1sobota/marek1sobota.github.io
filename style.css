@@ -271,11 +271,17 @@ nav ul li a:hover::after{
 
 .btn.btn2{
     display: inline-block;
-    background: #ff004f;
+    background: #c0003d;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-.contact-right form{
-    width: 100%;
+.contact-right label{
+    display: block;
+    margin-left: 15px;
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 16px;
 }
 form input, form textarea{
     width: 100%;
@@ -287,6 +293,11 @@ form input, form textarea{
     color: #fff;
     font-size: 18px;
     border-radius: 6px;
+}
+form input::placeholder,
+form textarea::placeholder{
+    color: #d9d9d9;
+    opacity: 1;
 }
 form btn2{
     padding: 14px 60px;
